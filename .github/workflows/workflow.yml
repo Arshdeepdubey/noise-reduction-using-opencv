@@ -218,7 +218,7 @@ jobs:
 
       - name: Upload test data as artifact
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-data
           path: data/
@@ -276,7 +276,7 @@ jobs:
 
       - name: Upload benchmark results
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: image-benchmark-results
           path: results/
@@ -330,7 +330,7 @@ jobs:
 
       - name: Upload video benchmark results
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: video-benchmark-results
           path: results/
@@ -437,7 +437,7 @@ jobs:
 
       - name: Upload demo results
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: demo-results
           path: results/demo/
@@ -593,7 +593,7 @@ jobs:
 
       - name: Download all artifacts
         if: always()
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: workflow-artifacts
 
