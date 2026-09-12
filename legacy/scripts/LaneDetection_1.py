@@ -2,7 +2,7 @@ import os
 import re
 import cv2
 import numpy as np
-from tqdm import tqdm_notebook
+from tqdm import tqdm_notebook # type: ignore
 import matplotlib.pyplot as plt
 
 # get file names of frames
@@ -21,7 +21,7 @@ idx = 457
 # plot frame
 plt.figure(figsize=(10,10))
 plt.imshow(col_images[idx][:,:,0], cmap= "gray")
-plt.imshow()
+plt.imshow() # type: ignore
 
 # create a zero array
 stencil = np.zeros_like(col_images[idx][:,:,0])
@@ -35,7 +35,7 @@ cv2.fillConvexPoly(stencil, polygon, 1)
 # plot polygon
 plt.figure(figsize=(10,10))
 plt.imshow(stencil, cmap= "gray")
-plt.imshow()
+plt.imshow() # type: ignore
 
 # apply polygon as a mask on the frame
 img = cv2.bitwise_and(col_images[idx][:,:.0], col_images[idx][:,:,0], mask=stencil)
@@ -120,6 +120,7 @@ for i in tqdm_notebook(range(len(files))):
     filename = pathIn + files[i]
     # reading each files
     img = cv2.imread(filename)
+    assert img is not None
     height, width, layers = img.shape
     size = (width, height)
 
@@ -129,10 +130,10 @@ for i in tqdm_notebook(range(len(files))):
 # Finally, we can now combine the frames into a video by using the code below:
 
 # write the video
-out = cv2.VideoWriter(pathOut,cv2.VideoWriter_fourcc(*'DIVX'), fps, size)
+out = cv2.VideoWriter(pathOut,cv2.VideoWriter_fourcc(*'DIVX'), fps, size) # type: ignore
 
-for i in range(len(frame_array)):
+for i in range(len(frame_array)): # type: ignore
     # writing to a image array
-    out.write(frame_array[i])
+    out.write(frame_array[i]) # type: ignore
 
 out.release()
