@@ -14,7 +14,7 @@ def region_of_interest(image):
     height = image.shape[0]
     triangle = np.array([[(100, height),(325, 25),(400, height),]], np.int32)
     mask = np.zeros_like(image)
-    cv2.fillPoly(mask, triangle, 255)
+    cv2.fillPoly(mask, triangle, 255) # type: ignore
     masked_image = cv2.bitwise_and(image, mask)
     return masked_image
 
@@ -43,7 +43,7 @@ theta = np.pi/180
 threshold = 100
 lines = cv2.HoughLinesP(cropped_Image,rho, theta, threshold, np.array ([ ]), minLineLength=40, maxLineGap=5)
 line_image = display_lines(image, lines)
-combo_image = cv2.addWeighted(image, 0.8, line_image, 1, 1)
+combo_image = cv2.addWeighted(image, 0.8, line_image, 1, 1) # type: ignore
 cv2.imshow("Image", combo_image)
 #if cv2.waitKey(1) & 0xFF == ord('q'):
 #    break

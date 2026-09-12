@@ -1,0 +1,8 @@
+opencv-python-headless>=4.9
+numpy>=1.24
+scipy>=1.11
+scikit-image>=0.22
+PyWavelets>=1.5
+matplotlib>=3.8
+pandas>=2.1
+pytest>=7.4
